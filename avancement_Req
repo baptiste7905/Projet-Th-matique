@@ -1,0 +1,14 @@
+%T=Température de l'eau (K)
+%S=Salinité de l'eau (g/kg ou ‰)
+%C(C03^2-)i=Concentration initilae en C03^2- = A
+%C(H2CO3)i=Concentration initiale en H2C03 = B
+%C(H+)i=Concentration initiale en H+ = C
+%C(CO2)i=Concentration initilae en C02 = D
+
+function S=avancement_Req(T,S,A,B,C,D)
+x=avancement_R0(T,S,D,B);
+K=Keq(T,S);
+syms y
+eqn=4*y^3+4*(A-C)*y^2+(C^2-4*C*(1+A)+K)*y+B*C^2==K*(B+x);
+S=solve(eqn,y,'Real',true);
+end
