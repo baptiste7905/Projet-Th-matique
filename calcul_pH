@@ -1,0 +1,11 @@
+%T=Température de l'eau (K)
+%S=Salinité de l'eau (g/kg ou ‰)
+%C(C03^2-)i=Concentration initilae en C03^2- = A
+%C(H2CO3)i=Concentration initiale en H2C03 = B
+%C(H+)i=Concentration initiale en H+ = C
+%%C(CO2)i=Concentration initilae en C02 = D
+
+function pH=calcul_pH(T,S,A,B,C,D)
+y=avancement_Req(T,S,A,B,C,D);
+pH=-log(C+2*y);
+end
