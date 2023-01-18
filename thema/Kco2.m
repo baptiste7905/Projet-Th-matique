@@ -1,0 +1,16 @@
+function K = Kco2 (T,P)
+I=0.7;
+a0=-0.4084;
+a1= 4430.118 ; 
+a2=-977652.3 ; 
+a3=-0.0035; 
+a4=1.279434 ;
+a5=-940.3269; 
+a6=162828.2; 
+a7=0.2985415; 
+a8=-0.05051694;
+Ketsat = exp(a0+a1/T+a2/(T^2)+a3*log(T)+(a4+a5/T+a6/(T^2)+a7*log(T))*sqrt(I)+a8*I);
+Ga= helgesson(T,I);
+Ksat=Ketsat/ Ga;
+R=8.31446261815324;
+K=exp(log(Ksat)+(32*(P-P_Sat_Antoine(T))/(R*T)));
